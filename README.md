@@ -2,6 +2,7 @@
 The project aims to use structured queries to filter, group, and aggregate raw data from Orders table of Decodelabs into actionable business intelligence.
 
 Decode Labs Project 3 - SQL Business Intelligence Analysis
+
 📊 Project Overview
 
 This project demonstrates how SQL can be used to transform raw transactional data into actionable business intelligence. Using structured SQL queries, we analyzed customer orders, revenue performance, product sales, payment methods, customer behavior, order fulfillment, referral channels, and profitability metrics.
