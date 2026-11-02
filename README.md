@@ -194,4 +194,4 @@ Data-Driven Decision Making
 Window Functions
 Advanced SQL Analytics
 
-# ⭐ If you found this project useful, consider giving it a star and connecting with me to discuss SQL, Data Analytics, Business Intelligence, and Data-Driven Decision Making.
+### ⭐ If you found this project useful, consider giving it a star and connecting with me to discuss SQL, Data Analytics, Business Intelligence, and Data-Driven Decision Making.
