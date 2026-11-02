@@ -43,6 +43,7 @@ The data sets contains 1200 records stored in the orders table with 1,200 rows a
 |CouponCode     | TEXT       |                                                                                       |
 |ReferralSource | TEXT       |                                                                                       |
 |TotalPrice     |TEXT        |                                                                                       |
+
 # 🛠 Technologies Used
 Excel Orders table converted to CSV
 CSV Imported to MySQL(Data Extraction)
@@ -51,3 +52,12 @@ Data Aggregation Functions
 Grouping and Filtering Techniques
 Business Intelligence Analytics
 Data-Driven Decision Making
+
+
+# Analysis of Yearly Revenue of DecodeLabs
+```
+SELECT Year(Date), COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
+FROM orders
+GROUP BY Year(Date)
+ORDER BY SUM(TotalPrice) DESC;
+```
