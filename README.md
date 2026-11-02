@@ -26,21 +26,22 @@ Which customers spend above average?
 The data sets contains 1200 records stored in the orders table with 1,200 rows and 14 columns / fields namely nameOrderID, Date, CustomerID, Product, Quantity, UnitPrice, ShippingAddress, PaymentMethod, OrderStatus, TrackingNumber, ItemsInCart, CouponCode, ReferralSource, Total Price
 
 # Data Dictionary
-
-|OrderID        | TEXT
-|Date           | TEXT
-|CustomerID     | TEXT
-|Product        | TEXT
-|Quantity       | INT
-|UnitPrice      | DOUBLE
-|ShippingAddress| TEXT
-|PaymentMethod  | TEXT
-|OrderStatus    | TEXT
-|TrackingNumber | TEXT
-|ItemsInCart    | INT
-|CouponCode     | TEXT
-|ReferralSource | TEXT
-|TotalPrice     |TEXT
+|...............|............|.......................................................................................|
+|Field Name     | Data Type  |
+|OrderID        | TEXT       |
+|Date           | TEXT       |
+|CustomerID     | TEXT       |
+|Product        | TEXT       |
+|Quantity       | INT        |
+|UnitPrice      | DOUBLE     |
+|ShippingAddress| TEXT       |
+|PaymentMethod  | TEXT       |
+|OrderStatus    | TEXT       |
+|TrackingNumber | TEXT       |
+|ItemsInCart    | INT        |
+|CouponCode     | TEXT       |
+|ReferralSource | TEXT       |
+|TotalPrice     |TEXT        |
 # 🛠 Technologies Used
 Excel Orders table converted to CSV
 CSV Imported to MySQL(Data Extraction)
