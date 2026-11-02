@@ -12,21 +12,20 @@ The objective of this project was to uncover business insights that can support 
 # Key Business Questions
 The analysis aims to answer the following key business questions:
 
-How has revenue performed over the years?
-Which customers generate the highest revenue?
-What products drive the most sales?
-Which payment methods contribute the highest revenue?
-What factors may be responsible for declining sales?
-What is the order fulfillment performance?
-Which referral channels generate the highest business value?
-Who are the highest-value customers?
-Which customers spend above average?
+- How has revenue performed over the years?
+- Which customers generate the highest revenue?
+- What products drive the most sales?
+- Which payment methods contribute the highest revenue?
+- What factors may be responsible for declining sales?
+- What is the order fulfillment performance?
+- Which referral channels generate the highest business value?
+- Who are the highest-value customers?
+- Which customers spend above average?
 
 # Dataset Description
 The data sets contains 1200 records stored in the orders table with 1,200 rows and 14 columns / fields namely nameOrderID, Date, CustomerID, Product, Quantity, UnitPrice, ShippingAddress, PaymentMethod, OrderStatus, TrackingNumber, ItemsInCart, CouponCode, ReferralSource, Total Price
 
-| A | B | C |
-| D | E | F |
+
 
 # Data Dictionary
 |Field Name     | Data Type  | Field Description                                                                     |
