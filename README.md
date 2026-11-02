@@ -30,6 +30,8 @@ The analysis aims to answer the following key business questions:
 The data sets contains 1200 records stored in the orders table with 1,200 rows and 14 columns / fields namely nameOrderID, Date, CustomerID, Product, Quantity, UnitPrice, ShippingAddress, PaymentMethod, OrderStatus, TrackingNumber, ItemsInCart, CouponCode, ReferralSource, Total Price
 
 
+| A | B |
+|...|...|
 
 # Data Dictionary
 /table
