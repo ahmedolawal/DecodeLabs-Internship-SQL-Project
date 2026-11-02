@@ -11,7 +11,6 @@ The objective of this project was to uncover business insights that can support 
 
 # Key Business Questions
 The analysis aims to answer the following key business questions:
-
 - How has revenue performed over the years?
 - Which customers generate the highest revenue?
 - What products drive the most sales?
@@ -64,9 +63,10 @@ USE decodelabs;
 
 SELECT *
 FROM orders;
-``
+```
 
 ## 📈 Key Business Analyses
+
 ## Analysis of Yearly Revenue of DecodeLabs
 ```
 SELECT Year(Date), COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
