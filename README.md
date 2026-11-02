@@ -57,11 +57,21 @@ Business Intelligence Analytics
 Data-Driven Decision Making
 
 
-# Analysis of Yearly Revenue of DecodeLabs
+## Analysis of Yearly Revenue of DecodeLabs
 ```
 SELECT Year(Date), COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
 FROM orders
 GROUP BY Year(Date)
 ORDER BY SUM(TotalPrice) DESC;
 ```
--- It is worth investigating what is responsible for the decline in sales from 2023 downward
+It is worth investigating what is responsible for the decline in sales from 2023 downward
+
+
+## Analysis of Purchases made by each Customer
+```
+SELECT CustomerID, COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) TotalPurchases
+FROM orders
+GROUP BY CustomerID
+ORDER BY SUM(TotalPrice) DESC;
+```
+-- CustomerID 'C38840' had the highest patronage with total count of 2 orders & total amount of 5723
