@@ -74,4 +74,89 @@ FROM orders
 GROUP BY CustomerID
 ORDER BY SUM(TotalPrice) DESC;
 ```
--- CustomerID 'C38840' had the highest patronage with total count of 2 orders & total amount of 5723
+CustomerID 'C38840' had the highest patronage with total count of 2 orders & total amount of 5723
+
+## Analysis of Sales by Product
+```
+SELECT Product, COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
+FROM orders
+GROUP BY Product
+ORDER BY SUM(TotalPrice) DESC;
+```
+
+## Analysis of Revenue by Payment Method
+```
+SELECT PaymentMethod, COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
+FROM orders
+GROUP BY PaymentMethod
+ORDER BY SUM(TotalPrice) DESC;
+```
+
+## Analysis of Yearly Revenue by Payment Method
+'''
+SELECT YEAR(Date) AS OrderYear,
+       PaymentMethod,
+       ROUND(SUM(TotalPrice), 0) AS Revenue
+FROM orders
+GROUP BY YEAR(Date), PaymentMethod
+ORDER BY OrderYear, Revenue DESC;
+'''
+
+Only 231 out of 1200 ordered (i.e. 19% of total order was delivered) which is quite low and 
+497(250+247) out of 1200 orders which is about 41% of total order were either cancelled or returned
+
+## Analysis of Coupon Code by Order
+```
+SELECT CouponCode, COUNT(*) OrderCount
+FROM orders
+GROUP BY CouponCode
+ORDER BY OrderCount DESC;
+```
+
+## Analysis of Revenue Referral Source
+```
+SELECT ReferralSource, COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
+FROM orders
+GROUP BY ReferralSource
+ORDER BY SUM(TotalPrice) DESC;
+```
+
+## Analysis of Revenue
+```
+SELECT ROUND(AVG(TotalPrice),0) Avg_Revenue, ROUND(MIN(TotalPrice),0) Min_Revenue, 
+ROUND(MAX(TotalPrice),0) Max_Revenue, ROUND(SUM(TotalPrice),0) Total_Revenue
+FROM orders;
+```
+
+## Analysis of Customer with Min & Max Revenue
+### Min Price
+```
+SELECT CustomerID, TotalPrice
+FROM orders
+ORDER BY TotalPrice ASC
+LIMIT 1;
+```
+
+### Max Price
+```
+SELECT CustomerID, TotalPrice
+FROM orders
+ORDER BY TotalPrice DESC
+LIMIT 1;
+```
+
+## Analysis of Customers whose sales is above Average Revenue
+```
+SELECT CustomerID, ROUND(SUM(TotalPrice), 0) AS TotalPrice
+FROM orders
+GROUP BY CustomerID
+HAVING SUM(TotalPrice) > (
+    SELECT AVG(CustomerTotal)
+    FROM (
+        SELECT SUM(TotalPrice) AS CustomerTotal
+        FROM orders
+        GROUP BY CustomerID
+    ) t
+)
+ORDER BY TotalPrice DESC;
+```
