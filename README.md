@@ -25,6 +25,9 @@ Which customers spend above average?
 # Dataset Description
 The data sets contains 1200 records stored in the orders table with 1,200 rows and 14 columns / fields namely nameOrderID, Date, CustomerID, Product, Quantity, UnitPrice, ShippingAddress, PaymentMethod, OrderStatus, TrackingNumber, ItemsInCart, CouponCode, ReferralSource, Total Price
 
+| A | B | C |
+| D | E | F |
+
 # Data Dictionary
 |Field Name     | Data Type  | Field Description                                                                     |
 |...............|............|.......................................................................................|
@@ -61,3 +64,4 @@ FROM orders
 GROUP BY Year(Date)
 ORDER BY SUM(TotalPrice) DESC;
 ```
+-- It is worth investigating what is responsible for the decline in sales from 2023 downward
