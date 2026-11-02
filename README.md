@@ -32,6 +32,7 @@ The data sets contains 1200 records stored in the orders table with 1,200 rows a
 
 
 # Data Dictionary
+/table
 |Field Name     | Data Type  | Field Description                                                                     |
 |...............|............|.......................................................................................|
 |Field Name     | Data Type  |                                                                                       |
