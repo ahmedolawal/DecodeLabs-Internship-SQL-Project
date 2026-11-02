@@ -164,15 +164,14 @@ ORDER BY TotalPrice DESC;
 # Strategic Recommendations
 
 ## Based on the findings:
-
-Investigate the decline in revenue beginning from 2023.
-Reduce cancellation and return rates through operational improvements.
-Build retention strategies for high-value customers.
-Allocate marketing budget toward the highest-performing referral channels.
-Optimize inventory around best-selling products.
-Introduce loyalty and rewards programs.
-Analyze product categories with poor performance.
-Improve delivery success rate and customer satisfaction metrics.
+- Investigate the decline in revenue beginning from 2023.
+- Reduce cancellation and return rates through operational improvements.
+- Build retention strategies for high-value customers.
+- Allocate marketing budget toward the highest-performing referral channels.
+- Optimize inventory around best-selling products.
+- Introduce loyalty and rewards programs.
+- Analyze product categories with poor performance.
+- Improve delivery success rate and customer satisfaction metrics.
 
 
 # Conclusion
@@ -183,15 +182,15 @@ customer retention, and revenue growth.
 
 Key Skills Demonstrated:
 
-SQL Querying
-Data Aggregation
-Business Intelligence Analytics
-Revenue Analysis
-Customer Segmentation
-Trend Analysis
-KPI Reporting
-Data-Driven Decision Making
-Window Functions
-Advanced SQL Analytics
+- SQL Querying
+- Data Aggregation
+- Business Intelligence Analytics
+- Revenue Analysis
+- Customer Segmentation
+- Trend Analysis
+- KPI Reporting
+- Data-Driven Decision Making
+- Window Functions
+- Advanced SQL Analytics
 
 ### ⭐ If you found this project useful, consider giving it a star and connecting with me to discuss SQL, Data Analytics, Business Intelligence, and Data-Driven Decision Making.
