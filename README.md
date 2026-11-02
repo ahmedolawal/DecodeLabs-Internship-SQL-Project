@@ -57,6 +57,17 @@ Business Intelligence Analytics
 Data-Driven Decision Making
 
 
+## Database Creation & Set up
+```
+CREATE DATABASE DecodeLabs;
+
+USE decodelabs;
+
+SELECT *
+FROM orders;
+``
+
+## 📈 Key Business Analyses
 ## Analysis of Yearly Revenue of DecodeLabs
 ```
 SELECT Year(Date), COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
@@ -128,8 +139,8 @@ ROUND(MAX(TotalPrice),0) Max_Revenue, ROUND(SUM(TotalPrice),0) Total_Revenue
 FROM orders;
 ```
 
-## Analysis of Customer with Min & Max Revenue
-### Min Price
+## Analysis of Customer with Minimum and Maximum Revenue
+### Minimum Revenue
 ```
 SELECT CustomerID, TotalPrice
 FROM orders
@@ -137,7 +148,7 @@ ORDER BY TotalPrice ASC
 LIMIT 1;
 ```
 
-### Max Price
+### Maximum Revenue
 ```
 SELECT CustomerID, TotalPrice
 FROM orders
