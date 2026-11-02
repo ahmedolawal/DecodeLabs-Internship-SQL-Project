@@ -3,12 +3,16 @@ The project aims to use structured queries to filter, group, and aggregate raw d
 
 Decode Labs Project 3 - SQL Business Intelligence Analysis
 
-📊 Project Overview
+# 📊 Project Overview
 
 This project demonstrates how SQL can be used to transform raw transactional data into actionable business intelligence. Using structured SQL queries, we analyzed customer orders, revenue performance, product sales, payment methods, customer behavior, order fulfillment, referral channels, and profitability metrics.
 
 # 🎯 Project Objectives
-The objective of this project was to uncover business insights that can support strategic decision-making, improve customer retention, optimize sales performance, and identify operational challenges impacting revenue growth.
+The objective of this project was to;
+- uncover business insights that can support strategic decision-making
+- improve customer retention
+- optimize sales performance and
+- identify operational challenges impacting revenue growth.
 
 # Key Business Questions
 The analysis aims to answer the following key business questions:
