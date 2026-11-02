@@ -30,8 +30,7 @@ The analysis aims to answer the following key business questions:
 The data sets contains 1200 records stored in the orders table with 1,200 rows and 14 columns / fields namely nameOrderID, Date, CustomerID, Product, Quantity, UnitPrice, ShippingAddress, PaymentMethod, OrderStatus, TrackingNumber, ItemsInCart, CouponCode, ReferralSource, Total Price
 
 
-| A | B |
-|...|...|
+/table
 
 # Data Dictionary
 /table
@@ -75,6 +74,15 @@ FROM orders;
 
 ## 📈 Key Business Analyses
 
+## 1. Average Quantity Ordered
+Understanding average purchasing volume per order
+```
+SELECT AVG(Quantity)
+FROM orders;
+```
+### Business Insight
+Provides a baseline understanding of customer purchasing behavior and inventory demand.
+
 ## Analysis of Yearly Revenue of DecodeLabs
 ```
 SELECT Year(Date), COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
@@ -83,6 +91,14 @@ GROUP BY Year(Date)
 ORDER BY SUM(TotalPrice) DESC;
 ```
 It is worth investigating what is responsible for the decline in sales from 2023 downward
+### Business Insight
+The analysis revealed a downward revenue trend beginning from 2023. This indicates the need for deeper investigation into:
+- Customer retention
+- Product demand
+- Market competition
+- Marketing effectiveness
+- Customer satisfaction
+- Order cancellations and returns
 
 
 ## Analysis of Purchases made by each Customer
@@ -92,15 +108,27 @@ FROM orders
 GROUP BY CustomerID
 ORDER BY SUM(TotalPrice) DESC;
 ```
+### Key Finding
 CustomerID 'C38840' had the highest patronage with total count of 2 orders & total amount of 5723
+### Business Value
+Provides opportunities for:
+- Loyalty Programs
+- VIP Customer Segmentation
+- Personalized Marketing Campaigns
 
-## Analysis of Sales by Product
+## Analysis of Sales by Product (Product Performance Analysis)
 ```
 SELECT Product, COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
 FROM orders
 GROUP BY Product
 ORDER BY SUM(TotalPrice) DESC;
 ```
+### Business Insight
+The analysis identifies:
+- Best-Selling Products
+- Underperforming Products
+- Revenue Contribution by Product Category
+It also supports inventory planning and product portfolio optimization.
 
 ## Analysis of Revenue by Payment Method
 ```
@@ -109,6 +137,11 @@ FROM orders
 GROUP BY PaymentMethod
 ORDER BY SUM(TotalPrice) DESC;
 ```
+### Business Insight
+This helps determine:
+- Most trusted payment channels
+- Customer payment preferences
+- Potential payment system optimization
 
 ## Analysis of Yearly Revenue by Payment Method
 '''
@@ -119,32 +152,79 @@ FROM orders
 GROUP BY YEAR(Date), PaymentMethod
 ORDER BY OrderYear, Revenue DESC;
 '''
-
 Only 231 out of 1200 ordered (i.e. 19% of total order was delivered) which is quite low and 
 497(250+247) out of 1200 orders which is about 41% of total order were either cancelled or returned
 
+### Business Value
+The analysis enables management to:
+- Track shifts in customer payment behavior
+- Identify emerging payment trends
+- Support fintech partnership decisions
+- Evaluate operational performance and customer experience.
+
+## Order Status Analysis
+To evaluate operational performance and customer experience.
+```
+SELECT OrderStatus,
+       COUNT(*) AS OrderCount
+FROM orders
+GROUP BY OrderStatus
+ORDER BY OrderCount DESC;
+```
+### Business Concern
+This performance level suggests potential issues relating to:
+- Supply Chain Operations
+- Inventory Availability
+- Product Quality
+- Delivery Service Performance
+- Customer Satisfaction
+
+Immediate root cause analysis is recommended.
+
+
 ## Analysis of Coupon Code by Order
+Assess promotional campaign effectiveness.
 ```
 SELECT CouponCode, COUNT(*) OrderCount
 FROM orders
 GROUP BY CouponCode
 ORDER BY OrderCount DESC;
 ```
-
+### Business Insight
+Measures:
+- Promo Code Adoption
+- Campaign Engagement
+- Discount Strategy Performance
+- 
 ## Analysis of Revenue Referral Source
+Evaluate marketing channel effectiveness.
 ```
 SELECT ReferralSource, COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
 FROM orders
 GROUP BY ReferralSource
 ORDER BY SUM(TotalPrice) DESC;
 ```
+#### Business Value
+Identifies:
+- Highest-performing acquisition channels
+- Best Return on Marketing Investment
+- Customer Acquisition Effectiveness
 
 ## Analysis of Revenue
+Understand overall business performance.
 ```
-SELECT ROUND(AVG(TotalPrice),0) Avg_Revenue, ROUND(MIN(TotalPrice),0) Min_Revenue, 
-ROUND(MAX(TotalPrice),0) Max_Revenue, ROUND(SUM(TotalPrice),0) Total_Revenue
+SELECT ROUND(AVG(TotalPrice),0) AS Avg_Revenue,
+       ROUND(MIN(TotalPrice),0) AS Min_Revenue,
+       ROUND(MAX(TotalPrice),0) AS Max_Revenue,
+       ROUND(SUM(TotalPrice),0) AS Total_Revenue
 FROM orders;
 ```
+#### Business Insight
+Provides a high-level performance snapshot including:
+- Average Order Value
+- Minimum Revenue Transaction
+- Maximum Revenue Transaction
+- Total Revenue Generated
 
 ## Analysis of Customer with Minimum and Maximum Revenue
 ### Minimum Revenue
@@ -154,7 +234,8 @@ FROM orders
 ORDER BY TotalPrice ASC
 LIMIT 1;
 ```
-
+Purpose
+- Identifies the lowest-value transaction and customer.
 ### Maximum Revenue
 ```
 SELECT CustomerID, TotalPrice
@@ -162,6 +243,8 @@ FROM orders
 ORDER BY TotalPrice DESC
 LIMIT 1;
 ```
+Purpose
+Identifies the highest-value transaction and customer..
 
 ## Analysis of Customers whose sales is above Average Revenue
 ```
@@ -178,6 +261,12 @@ HAVING SUM(TotalPrice) > (
 )
 ORDER BY TotalPrice DESC;
 ```
+#### Business Value
+This analysis Supports:
+- Customer Segmentation
+- Premium Customer Identification
+- Loyalty Reward Programs
+- Revenue Growth Strategies
 
 # Strategic Recommendations
 
