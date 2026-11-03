@@ -116,13 +116,27 @@ Provides opportunities for:
 - VIP Customer Segmentation
 - Personalized Marketing Campaigns
 
-## Analysis of Sales by Product (Product Performance Analysis)
+## Analysis of Revenue by Product (Product Performance Analysis)
 ```
 SELECT Product, COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
 FROM orders
 GROUP BY Product
 ORDER BY SUM(TotalPrice) DESC;
 ```
+
+## Revenue Contribution by Product
+```
+SELECT Product,
+       ROUND(SUM(TotalPrice),0) Revenue,
+       ROUND(
+       SUM(TotalPrice) * 100 /
+       (SELECT SUM(TotalPrice) FROM orders),2
+       ) AS RevenueContributionPct
+FROM orders
+GROUP BY Product
+ORDER BY Revenue DESC;
+```
+
 ### Business Insight
 The analysis identifies:
 - Best-Selling Products
@@ -280,6 +294,96 @@ This analysis Supports:
 - Analyze product categories with poor performance.
 - Improve delivery success rate and customer satisfaction metrics.
 
+## Monthly Revenue Trend
+```
+SELECT DATE_FORMAT(Date,'%Y-%m') AS Month,
+       ROUND(SUM(TotalPrice),0) AS Revenue
+FROM orders
+GROUP BY DATE_FORMAT(Date,'%Y-%m')
+ORDER BY Month;
+```
+The above analysis Identifies seasonality and monthly growth trends.
+
+## Top 10 Customers by Revenue
+```
+SELECT CustomerID,
+       ROUND(SUM(TotalPrice),0) Revenue
+FROM orders
+GROUP BY CustomerID
+ORDER BY Revenue DESC
+LIMIT 10;
+```
+
+## Average Order Value (AOV)
+SELECT ROUND(SUM(TotalPrice)/COUNT(OrderID),2) AS AvgOrderValue
+FROM orders;
+
+## Cancellation Rate
+```
+SELECT
+ROUND(
+COUNT(CASE WHEN OrderStatus = 'Cancelled' THEN 1 END)
+*100.0/COUNT(*),2
+) AS CancellationRate
+FROM orders;
+```
+
+## Return Rate
+```
+SELECT
+ROUND(
+COUNT(CASE WHEN OrderStatus = 'Returned' THEN 1 END)
+*100.0/COUNT(*),2
+) AS ReturnRate
+FROM orders;
+```
+
+## Customer Segmentation
+```
+SELECT CustomerID,
+       SUM(TotalPrice) Revenue,
+       CASE
+            WHEN SUM(TotalPrice) >= 5000 THEN 'VIP'
+            WHEN SUM(TotalPrice) >= 2000 THEN 'Gold'
+            WHEN SUM(TotalPrice) >= 1000 THEN 'Silver'
+            ELSE 'Standard'
+       END AS CustomerSegment
+FROM orders
+GROUP BY CustomerID;
+```
+
+## Revenue by Customer Class
+```
+SELECT CustomerSegment,
+       COUNT(CustomerID) AS CustomerCount,
+       ROUND(SUM(TotalRevenue), 0) AS TotalRevenue
+FROM (
+       SELECT CustomerID,
+              SUM(TotalPrice) AS TotalRevenue,
+              CASE
+                   WHEN SUM(TotalPrice) >= 5000 THEN 'VIP'
+                   WHEN SUM(TotalPrice) >= 2000 THEN 'Gold'
+                   WHEN SUM(TotalPrice) >= 1000 THEN 'Silver'
+                   ELSE 'Standard'
+              END AS CustomerSegment
+       FROM orders
+       GROUP BY CustomerID
+     ) CustomerSegments
+GROUP BY CustomerSegment
+ORDER BY TotalRevenue DESC;
+```
+
+## Product Ranking Using Window Functions
+SELECT Product,
+       Revenue,
+       RANK() OVER(ORDER BY Revenue DESC) ProductRank
+FROM
+(
+    SELECT Product,
+           ROUND(SUM(TotalPrice),2) Revenue
+    FROM orders
+    GROUP BY Product
+) a;
 
 # Conclusion
 
