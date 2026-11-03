@@ -177,18 +177,15 @@ This helps determine:
 - Potential payment system optimization
 
 ## Analysis of Yearly Revenue by Payment Method
-'''
+```
 SELECT YEAR(Date) AS OrderYear,
        PaymentMethod,
        ROUND(SUM(TotalPrice), 0) AS Revenue
 FROM orders
 GROUP BY YEAR(Date), PaymentMethod
 ORDER BY OrderYear, Revenue DESC;
-'''
-<img width="365" height="143" alt="image" src="https://github.com/user-attachments/assets/8f92b4ab-2bf0-4ccb-8fe0-f8898a06ff2b" />
-
-Only 231 out of 1200 ordered (i.e. 19% of total order was delivered) which is quite low and 
-497(250+247) out of 1200 orders which is about 41% of total order were either cancelled or returned
+```
+<img width="378" height="317" alt="image" src="https://github.com/user-attachments/assets/a8917549-e725-44cf-a3b8-97f9519c3d04" />
 
 ### Business Value
 The analysis enables management to:
@@ -196,54 +193,6 @@ The analysis enables management to:
 - Identify emerging payment trends
 - Support fintech partnership decisions
 - Evaluate operational performance and customer experience.
-
-## Order Status Analysis
-To evaluate operational performance and customer experience.
-```
-SELECT OrderStatus,
-       COUNT(*) AS OrderCount
-FROM orders
-GROUP BY OrderStatus
-ORDER BY OrderCount DESC;
-```
-### Business Concern
-This performance level suggests potential issues relating to:
-- Supply Chain Operations
-- Inventory Availability
-- Product Quality
-- Delivery Service Performance
-- Customer Satisfaction
-
-Immediate root cause analysis is recommended.
-
-
-## Analysis of Coupon Code by Order
-Assess promotional campaign effectiveness.
-```
-SELECT CouponCode, COUNT(*) OrderCount
-FROM orders
-GROUP BY CouponCode
-ORDER BY OrderCount DESC;
-```
-### Business Insight
-Measures:
-- Promo Code Adoption
-- Campaign Engagement
-- Discount Strategy Performance
-- 
-## Analysis of Revenue Referral Source
-Evaluate marketing channel effectiveness.
-```
-SELECT ReferralSource, COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
-FROM orders
-GROUP BY ReferralSource
-ORDER BY SUM(TotalPrice) DESC;
-```
-#### Business Value
-Identifies:
-- Highest-performing acquisition channels
-- Best Return on Marketing Investment
-- Customer Acquisition Effectiveness
 
 ## Analysis of Revenue
 Understand overall business performance.
@@ -254,6 +203,8 @@ SELECT ROUND(AVG(TotalPrice),0) AS Avg_Revenue,
        ROUND(SUM(TotalPrice),0) AS Total_Revenue
 FROM orders;
 ```
+<img width="367" height="73" alt="image" src="https://github.com/user-attachments/assets/2c73cb40-7fce-449c-8e41-06c171193dd4" />
+
 #### Business Insight
 Provides a high-level performance snapshot including:
 - Average Order Value
@@ -261,25 +212,57 @@ Provides a high-level performance snapshot including:
 - Maximum Revenue Transaction
 - Total Revenue Generated
 
-## Analysis of Customer with Minimum and Maximum Revenue
-### Minimum Revenue
+## Analysis of Customer with Minimum and Maximum Price
+### Minimum Price
 ```
 SELECT CustomerID, TotalPrice
 FROM orders
 ORDER BY TotalPrice ASC
 LIMIT 1;
 ```
+<img width="419" height="68" alt="image" src="https://github.com/user-attachments/assets/56b38ca9-8129-4391-8658-e92ade562700" />
+
 Purpose
 - Identifies the lowest-value transaction and customer.
-### Maximum Revenue
+
+### Maximum Price
 ```
 SELECT CustomerID, TotalPrice
 FROM orders
 ORDER BY TotalPrice DESC
 LIMIT 1;
 ```
+<img width="415" height="71" alt="image" src="https://github.com/user-attachments/assets/0940c56b-f67b-4b1f-97b2-454ca0cea27a" />
+
 Purpose
-Identifies the highest-value transaction and customer..
+Identifies the highest-value transaction and customer.
+
+## Analysis of Customer with Minimum and Maximum Revenue
+### Minimum Revenue
+```
+SELECT CustomerID, SUM(TotalPrice) Total_Revenue
+FROM orders
+GROUP BY CustomerID
+ORDER BY Total_Revenue ASC
+LIMIT 1;
+```
+<img width="412" height="66" alt="image" src="https://github.com/user-attachments/assets/6dcb6d13-d3dc-44b1-a98a-84e496f4e3a6" />
+
+Purpose
+Identifies the customer that had the lowest contribution to our total revenue
+
+### Maximum Revenue
+```
+SELECT CustomerID, SUM(TotalPrice) Total_Revenue
+FROM orders
+GROUP BY CustomerID
+ORDER BY Total_Revenue DESC
+LIMIT 1;
+```
+<img width="421" height="69" alt="image" src="https://github.com/user-attachments/assets/e2cc5795-8348-43b9-ad73-3cca20734574" />
+
+Purpose
+Identifies the customer that had the highest contribution to our total revenue.
 
 ## Analysis of Customers whose sales is above Average Revenue
 ```
@@ -296,6 +279,8 @@ HAVING SUM(TotalPrice) > (
 )
 ORDER BY TotalPrice DESC;
 ```
+<img width="407" height="495" alt="image" src="https://github.com/user-attachments/assets/499b01bb-209e-44a9-a44d-398988c82cc9" />
+
 #### Business Value
 This analysis Supports:
 - Customer Segmentation
@@ -311,6 +296,8 @@ FROM orders
 GROUP BY DATE_FORMAT(Date,'%Y-%m')
 ORDER BY Month;
 ```
+<img width="419" height="482" alt="image" src="https://github.com/user-attachments/assets/c4868d69-22c2-4d32-8a1e-23f29aee49b2" />
+
 The above analysis Identifies seasonality and monthly growth trends.
 
 ## Top 10 Customers by Revenue
@@ -322,30 +309,7 @@ GROUP BY CustomerID
 ORDER BY Revenue DESC
 LIMIT 10;
 ```
-
-## Average Order Value (AOV)
-SELECT ROUND(SUM(TotalPrice)/COUNT(OrderID),2) AS AvgOrderValue
-FROM orders;
-
-## Cancellation Rate
-```
-SELECT
-ROUND(
-COUNT(CASE WHEN OrderStatus = 'Cancelled' THEN 1 END)
-*100.0/COUNT(*),2
-) AS CancellationRate
-FROM orders;
-```
-
-## Return Rate
-```
-SELECT
-ROUND(
-COUNT(CASE WHEN OrderStatus = 'Returned' THEN 1 END)
-*100.0/COUNT(*),2
-) AS ReturnRate
-FROM orders;
-```
+<img width="438" height="235" alt="image" src="https://github.com/user-attachments/assets/37b44ec6-1b07-4f96-81ad-81fb060ea7a9" />
 
 ## Customer Segmentation
 ```
@@ -360,6 +324,8 @@ SELECT CustomerID,
 FROM orders
 GROUP BY CustomerID;
 ```
+<img width="524" height="437" alt="image" src="https://github.com/user-attachments/assets/971d1b1f-ad01-4ac7-b08e-f0668f6682d8" />
+
 
 ## Revenue by Customer Class
 ```
@@ -381,6 +347,7 @@ FROM (
 GROUP BY CustomerSegment
 ORDER BY TotalRevenue DESC;
 ```
+<img width="362" height="119" alt="image" src="https://github.com/user-attachments/assets/7a3113a0-0bcb-4606-923a-b735727072e6" />
 
 ## Product Ranking Using Window Functions
 ```
@@ -395,6 +362,108 @@ FROM
     GROUP BY Product
 ) a;
 ```
+<img width="364" height="179" alt="image" src="https://github.com/user-attachments/assets/b48266a1-ca21-4bc8-9501-6c63217049d0" />
+
+## Order Status Analysis
+To evaluate operational performance and customer experience.
+```
+SELECT OrderStatus,
+       COUNT(*) AS OrderCount
+FROM orders
+GROUP BY OrderStatus
+ORDER BY OrderCount DESC;
+```
+<img width="367" height="143" alt="image" src="https://github.com/user-attachments/assets/7a4c61a8-4062-4696-a142-804189fb3e09" />
+
+Only 231 out of 1200 ordered (i.e. 19% of total order was delivered) which is quite low and 
+497(250+247) out of 1200 orders which is about 41% of total order were either cancelled or returned
+
+### Business Concern
+This performance level suggests potential issues relating to:
+- Supply Chain Operations
+- Inventory Availability
+- Product Quality
+- Delivery Service Performance
+- Customer Satisfaction
+
+Immediate root cause analysis is recommended.
+
+
+## Analysis of Coupon Code by Order
+Assess promotional campaign effectiveness.
+```
+SELECT CouponCode, COUNT(*) OrderCount
+FROM orders
+GROUP BY CouponCode
+ORDER BY OrderCount DESC;
+```
+<img width="360" height="127" alt="image" src="https://github.com/user-attachments/assets/eeffa159-758a-4457-a05e-4e4f36e89d23" />
+
+### Business Insight
+Measures:
+- Promo Code Adoption
+- Campaign Engagement
+- Discount Strategy Performance
+- 
+## Analysis of Revenue Referral Source
+Evaluate marketing channel effectiveness.
+```
+SELECT ReferralSource, COUNT(Quantity) Count, ROUND(SUM(TotalPrice),0) Revenue
+FROM orders
+GROUP BY ReferralSource
+ORDER BY SUM(TotalPrice) DESC;
+```
+<img width="368" height="155" alt="image" src="https://github.com/user-attachments/assets/32006765-c27b-433e-bf91-da2d1b54e99c" />
+
+#### Business Value
+Identifies:
+- Highest-performing acquisition channels
+- Best Return on Marketing Investment
+- Customer Acquisition Effectiveness
+
+
+## Average Order Value (AOV)
+SELECT ROUND(SUM(TotalPrice)/COUNT(OrderID),2) AS AvgOrderValue
+FROM orders;
+
+<img width="380" height="77" alt="image" src="https://github.com/user-attachments/assets/f11ae553-f732-4f08-b382-a03d5dcc2bb2" />
+
+
+## Cancellation Rate
+```
+SELECT
+ROUND(
+COUNT(CASE WHEN OrderStatus = 'Cancelled' THEN 1 END)
+*100.0/COUNT(*),2
+) AS CancellationRate
+FROM orders;
+```
+<img width="375" height="76" alt="image" src="https://github.com/user-attachments/assets/0214040f-70fa-4dcc-9915-def4e290f9de" />
+
+
+## Return Rate
+```
+SELECT
+ROUND(
+COUNT(CASE WHEN OrderStatus = 'Returned' THEN 1 END)
+*100.0/COUNT(*),2
+) AS ReturnRate
+FROM orders;
+```
+<img width="371" height="78" alt="image" src="https://github.com/user-attachments/assets/399ba869-d9cb-489d-9b42-f460c4fb9d53" />
+
+## Customer Lifetime Value (CLV)
+```
+SELECT CustomerID,
+       COUNT(OrderID) Orders,
+       ROUND(SUM(TotalPrice),2) LifetimeValue
+FROM orders
+GROUP BY CustomerID
+ORDER BY LifetimeValue DESC;
+```
+<img width="513" height="409" alt="image" src="https://github.com/user-attachments/assets/4965d597-23a3-4e32-a014-4d1cd276dcee" />
+
+
 
 # Strategic Recommendations
 
