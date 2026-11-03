@@ -282,18 +282,6 @@ This analysis Supports:
 - Loyalty Reward Programs
 - Revenue Growth Strategies
 
-# Strategic Recommendations
-
-## Based on the findings:
-- Investigate the decline in revenue beginning from 2023.
-- Reduce cancellation and return rates through operational improvements.
-- Build retention strategies for high-value customers.
-- Allocate marketing budget toward the highest-performing referral channels.
-- Optimize inventory around best-selling products.
-- Introduce loyalty and rewards programs.
-- Analyze product categories with poor performance.
-- Improve delivery success rate and customer satisfaction metrics.
-
 ## Monthly Revenue Trend
 ```
 SELECT DATE_FORMAT(Date,'%Y-%m') AS Month,
@@ -384,6 +372,19 @@ FROM
     FROM orders
     GROUP BY Product
 ) a;
+
+
+# Strategic Recommendations
+
+## Based on the findings:
+- Investigate the decline in revenue beginning from 2023.
+- Reduce cancellation and return rates through operational improvements.
+- Build retention strategies for high-value customers.
+- Allocate marketing budget toward the highest-performing referral channels.
+- Optimize inventory around best-selling products.
+- Introduce loyalty and rewards programs.
+- Analyze product categories with poor performance.
+- Improve delivery success rate and customer satisfaction metrics.
 
 # Conclusion
 
