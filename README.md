@@ -71,6 +71,8 @@ USE decodelabs;
 SELECT *
 FROM orders;
 ```
+<img width="1070" height="303" alt="image" src="https://github.com/user-attachments/assets/39c0439e-9bb5-4bd8-8249-28ca543bb60c" />
+
 
 ## 📈 Key Business Analyses
 
