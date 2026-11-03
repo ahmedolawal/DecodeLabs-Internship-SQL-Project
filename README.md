@@ -71,7 +71,8 @@ USE decodelabs;
 SELECT *
 FROM orders;
 ```
-<img width="984" height="71" alt="image" src="https://github.com/user-attachments/assets/689e8329-d7b2-4fe0-8113-27a0904d50b6" />
+
+<img width="976" height="100" alt="image" src="https://github.com/user-attachments/assets/524cae1e-f798-4a67-a460-7541d4f0e344" />
 
 
 <img width="1070" height="303" alt="image" src="https://github.com/user-attachments/assets/39c0439e-9bb5-4bd8-8249-28ca543bb60c" />
