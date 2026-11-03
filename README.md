@@ -362,6 +362,7 @@ ORDER BY TotalRevenue DESC;
 ```
 
 ## Product Ranking Using Window Functions
+```
 SELECT Product,
        Revenue,
        RANK() OVER(ORDER BY Revenue DESC) ProductRank
@@ -372,7 +373,7 @@ FROM
     FROM orders
     GROUP BY Product
 ) a;
-
+```
 
 # Strategic Recommendations
 
