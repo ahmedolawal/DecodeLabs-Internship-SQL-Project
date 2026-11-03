@@ -71,6 +71,9 @@ USE decodelabs;
 SELECT *
 FROM orders;
 ```
+<img width="984" height="71" alt="image" src="https://github.com/user-attachments/assets/689e8329-d7b2-4fe0-8113-27a0904d50b6" />
+
+
 <img width="1070" height="303" alt="image" src="https://github.com/user-attachments/assets/39c0439e-9bb5-4bd8-8249-28ca543bb60c" />
 
 
@@ -79,9 +82,12 @@ FROM orders;
 ## 1. Average Quantity Ordered
 Understanding average purchasing volume per order
 ```
-SELECT AVG(Quantity)
+SELECT ROUND(AVG(Quantity),0) Average_Quantity 
 FROM orders;
 ```
+<img width="371" height="81" alt="image" src="https://github.com/user-attachments/assets/9b672a21-eb8d-41ac-b95b-c60981c9ec97" />
+
+
 ### Business Insight
 Provides a baseline understanding of customer purchasing behavior and inventory demand.
 
