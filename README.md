@@ -327,7 +327,7 @@ GROUP BY CustomerID;
 <img width="524" height="437" alt="image" src="https://github.com/user-attachments/assets/971d1b1f-ad01-4ac7-b08e-f0668f6682d8" />
 
 
-## Revenue by Customer Class
+## Revenue by Customer Segment
 ```
 SELECT CustomerSegment,
        COUNT(CustomerID) AS CustomerCount,
