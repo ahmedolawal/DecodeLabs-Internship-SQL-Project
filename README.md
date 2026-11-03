@@ -99,6 +99,9 @@ FROM orders
 GROUP BY Year(Date)
 ORDER BY SUM(TotalPrice) DESC;
 ```
+
+<img width="404" height="119" alt="image" src="https://github.com/user-attachments/assets/6c6c7907-6c25-4f8d-9caa-1b1674e36de1" />
+
 It is worth investigating what is responsible for the decline in sales from 2023 downward
 ### Business Insight
 The analysis revealed a downward revenue trend beginning from 2023. This indicates the need for deeper investigation into:
@@ -117,6 +120,8 @@ FROM orders
 GROUP BY CustomerID
 ORDER BY SUM(TotalPrice) DESC;
 ```
+<img width="542" height="320" alt="image" src="https://github.com/user-attachments/assets/f92f7458-71c8-4aca-8580-7cad4020ab88" />
+
 ### Key Finding
 CustomerID 'C38840' had the highest patronage with total count of 2 orders & total amount of 5723
 ### Business Value
@@ -132,6 +137,8 @@ FROM orders
 GROUP BY Product
 ORDER BY SUM(TotalPrice) DESC;
 ```
+<img width="397" height="179" alt="image" src="https://github.com/user-attachments/assets/5bc224c5-db3e-4e64-bed5-3d81e279c1cd" />
+
 
 ## Revenue Contribution by Product
 ```
@@ -145,6 +152,7 @@ FROM orders
 GROUP BY Product
 ORDER BY Revenue DESC;
 ```
+<img width="361" height="170" alt="image" src="https://github.com/user-attachments/assets/f51cdfd9-7833-44dc-b754-09e8bf08bce3" />
 
 ### Business Insight
 The analysis identifies:
@@ -160,6 +168,8 @@ FROM orders
 GROUP BY PaymentMethod
 ORDER BY SUM(TotalPrice) DESC;
 ```
+<img width="365" height="143" alt="image" src="https://github.com/user-attachments/assets/33f2a716-ecce-4872-8aeb-83d3ea1f9c85" />
+
 ### Business Insight
 This helps determine:
 - Most trusted payment channels
@@ -175,6 +185,8 @@ FROM orders
 GROUP BY YEAR(Date), PaymentMethod
 ORDER BY OrderYear, Revenue DESC;
 '''
+<img width="365" height="143" alt="image" src="https://github.com/user-attachments/assets/8f92b4ab-2bf0-4ccb-8fe0-f8898a06ff2b" />
+
 Only 231 out of 1200 ordered (i.e. 19% of total order was delivered) which is quite low and 
 497(250+247) out of 1200 orders which is about 41% of total order were either cancelled or returned
 
