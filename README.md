@@ -33,24 +33,23 @@ The data sets contains 1200 records stored in the orders table with 1,200 rows a
 /table
 
 # Data Dictionary
-/table
-|Field Name     | Data Type  | Field Description                                                                     |
-|...............|............|.......................................................................................|
-|Field Name     | Data Type  |                                                                                       |
-|OrderID        | TEXT       |                                                                                       |
-|Date           | TEXT       |                                                                                       |
-|CustomerID     | TEXT       |                                                                                       |
-|Product        | TEXT       |                                                                                       |
-|Quantity       | INT        |                                                                                       |
-|UnitPrice      | DOUBLE     |                                                                                       |
-|ShippingAddress| TEXT       |                                                                                       |
-|PaymentMethod  | TEXT       |                                                                                       |
-|OrderStatus    | TEXT       |                                                                                       |
-|TrackingNumber | TEXT       |                                                                                       |
-|ItemsInCart    | INT        |                                                                                       |
-|CouponCode     | TEXT       |                                                                                       |
-|ReferralSource | TEXT       |                                                                                       |
-|TotalPrice     |TEXT        |                                                                                       |
+
+| Field Name      | Data Type | Field Description                                                              |
+|-----------------|-----------|--------------------------------------------------------------------------------|
+| OrderID         | TEXT      | Unique identifier assigned to each customer order.                             |
+| Date            | TEXT      | Date on which the order was placed.                                            |
+| CustomerID      | TEXT      | Unique identifier for the customer who placed the order.                       |
+| Product         | TEXT      | Name or description of the product purchased.                                  |
+| Quantity        | INT       | Number of units of the product ordered.                                        |
+| UnitPrice       | DOUBLE    | Price of a single unit of the product at the time of purchase.                 |
+| ShippingAddress | TEXT      | Destination address to which the order is delivered.                           |
+| PaymentMethod   | TEXT      | Method used by the customer to pay for the order (e.g., card, PayPal).         |
+| OrderStatus     | TEXT      | Current stage of the order in the fulfilment process (e.g., shipped, delivered).|
+| TrackingNumber  | TEXT      | Carrier-issued code used to track the shipment of the order.                   |
+| ItemsInCart     | INT       | Number of items in the customer's cart at the point of checkout.               |
+| CouponCode      | TEXT      | Promotional code applied to the order, if any.                                 |
+| ReferralSource  | TEXT      | Marketing channel or source that brought the customer to the store.            |
+| TotalPrice      | TEXT      | Total amount charged for the order (see note below on data type).              |
 
 # 🛠 Technologies Used
 Excel Orders table converted to CSV
